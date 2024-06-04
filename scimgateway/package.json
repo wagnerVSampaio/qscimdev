@@ -1,0 +1,23 @@
+{
+  "name": "my-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "json-rules-engine": "^6.1.2",
+    "jsonata": "^2.0.3",
+    "koa-cors": "^0.0.16",
+    "scimgateway": "^4.1.14",
+    "kafkajs": "2.2.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.16.2"
+  }
+}

@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;400;700&display=swap");
+
+:root {
+  --border-color: #cacaca;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Barlow", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: inherit;
+  border: 1px solid var(--border-color);
+  transition: 200ms ease-in-out;
+}
+
+button:hover {
+  background-color: #f3f3f3;
+}
+
+buton:disabled {
+  background-color: #f0f0f0;
+}
+
+.page_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 4rem;
+  background-color: #f5f5f5;
+  min-height: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 16px 36px;
+  border-radius: 16px;
+  box-shadow: 1px 1px 5px var(--shadow-color);
+  background-color: white;
+  min-width: 400px;
+  /* border-bottom: 1px solid rgb(179, 179, 179); */
+}
+
+.header_details {
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ----------------------------------- */
+/* home styles */
+
+#home_form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#home_form_container div {
+  padding: 1rem 2rem;
+  width: 300px;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 4px var(--shadow-color);
+  background-color: white;
+  min-width: 400px;
+  transition: 150ms ease-in-out;
+  cursor: pointer;
+  color: black;
+}
+
+#home_form_container div:hover {
+  transform: scale(1.05);
+  background-color: #f7f7f7;
+}
+
+/* ----------------------------------- */
+/* content styles */
+
+.content_input {
+  text-align: center;
+}
+
+.content_input img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ----------------------------------- */
+/* premade styles */
+
+.premade_input {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.premade_internal_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+/* ----------------------------------- */
+/* form input styles */
+
+.required {
+  color: red;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  padding: 16px 36px 24px;
+  border-radius: 16px;
+  box-shadow: 1px 1px 5px var(--shadow-color);
+  min-width: 400px;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  margin-top: 2rem;
+}
+
+.form_input {
+  display: flex;
+  /* width: 300px; */
+  gap: 0.5rem;
+  align-items: center;
+  margin: 10px;
+}
+
+/* ----------------------------------- */
+/* switch styles */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.response-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 1px 1px 5px var(--shadow-color);
+  padding: 16px;
+  text-align: center;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+
+.card-content p {
+  margin-top: 30px;
+}
+
+.response-card button {
+  margin-top: 10px;
+}

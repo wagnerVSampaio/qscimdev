@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <html>
+  
+  <head>
+      <title>Form </title>
+      <link rel="stylesheet" href="/styles.css" />
+  </head>
+  
+  <body>
+      <div class="page_container">
+          <div id="response-card" class="response-card">
+              <div class="card-content">
+                  <h1>Form successfully submitted!</h1>
+                  <div class="buttons">
+                      <button id="yes-btn">Reply to the form again</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </body>
+  <script>
+      const responseCard = document.getElementById("response-card");
+      const yesButton = document.getElementById("yes-btn");
+  
+      yesButton.addEventListener("click", () => {
+          window.history.back();
+      });
+  </script>
+  
+  </html>

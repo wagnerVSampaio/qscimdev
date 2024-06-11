@@ -1,6 +1,6 @@
 {
   "scimgateway": {
-    "port": 8886,
+    "port": 8889,
     "localhostonly": false,
     "payloadSize": null,
     "scim": {

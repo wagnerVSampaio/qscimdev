@@ -22,7 +22,7 @@
   # Copy app to Docker container
   COPY --chown=node:node . .
   
-  EXPOSE 8886
+  EXPOSE 8889
   EXPOSE 8880
 
   # Copy prisma/ to container

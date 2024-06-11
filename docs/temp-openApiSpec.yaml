@@ -266,7 +266,7 @@ components:
 security:
   - basicAuth: []
 servers:
-  - url: http://localhost:3000/api/container/8886
+  - url: http://localhost:3000/api/container/8889
     description: "New Connector2: mongodb Connector"
   - url: http://localhost:3000/api/container/8880
     description: "New Connector: loki Connector"

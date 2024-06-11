@@ -4,7 +4,7 @@ services:
   scimgateway:
     build: ./scimgateway
     ports:
-      - "8886:8886"
+      - "8889:8889"
       - "8880:8880"
     restart: always
     environment:

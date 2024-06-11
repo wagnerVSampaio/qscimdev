@@ -23,7 +23,6 @@
   COPY --chown=node:node . .
   
   EXPOSE 8889
-  EXPOSE 8880
 
   # Copy prisma/ to container
   COPY prisma/ prisma

@@ -15,7 +15,8 @@
     "jsonata": "^2.0.3",
     "koa-cors": "^0.0.16",
     "scimgateway": "^4.1.14",
-    "kafkajs": "2.2.4"
+    "kafkajs": "2.2.4",
+    "@prisma/client": "^4.16.2"
   },
   "devDependencies": {
     "prisma": "^4.16.2"

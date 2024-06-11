@@ -4,12 +4,16 @@ services:
   scimgateway:
     build: ./scimgateway
     ports:
+      - "8886:8886"
       - "8880:8880"
     restart: always
     environment:
+      mongodb-new-connector2_BASIC_0_USERNAME: wagner
+      mongodb-new-connector2_BASIC_0_PASSWORD: 1236
       loki-new-connector_OAUTH2_0_CLIENT_ID: wagner
       loki-new-connector_OAUTH2_0_CLIENT_SECRET: 54545
 
+      DATABASE_URL: mongodb+srv://wagner:1234@cluster0.22ykmnt.mongodb.net/qscim?retryWrites=true&w=majority&appName=Cluster0
     volumes:
       - data:/home/node/app/data
    

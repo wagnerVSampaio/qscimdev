@@ -2,7 +2,7 @@
 
 Project was created using **QCSIM**.
 
-- Generated Connectors: 1
+- Generated Connectors: 2
 - Telemetry: Disabled
 - Gateway: Disabled
 

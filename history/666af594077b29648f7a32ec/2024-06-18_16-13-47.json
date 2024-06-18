@@ -1,0 +1,184 @@
+{
+  "connectorId": "666af594077b29648f7a32ec",
+  "name": "MongoDB-example",
+  "connectors": [
+    {
+      "_id": {
+        "$oid": "666af594077b29648f7a32ec"
+      },
+      "name": "MongoDB-example",
+      "description": "Configures MongoDB to be used as a data connector. It formats names, defines scimgateway settings and formats group and user mappings. ",
+      "connector": "mongodb",
+      "port": 8881,
+      "auth": [
+        {
+          "name": "Basic Auth",
+          "type": "basic",
+          "details": {
+            "username": "gwadmin",
+            "password": "password"
+          }
+        }
+      ],
+      "config": {
+        "description": "",
+        "url": "mongodb+srv://admin:cancao123@cluster0.6igatzu.mongodb.net/?w=majority&retryWrites=true&authSource=admin",
+        "database": "form",
+        "userCollectionName": "users",
+        "groupCollectionName": "groups"
+      },
+      "mapping": {
+        "description": "",
+        "group": [
+          {
+            "name": "_id",
+            "mapTo": "id",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "mapTo": "displayName",
+            "type": "string"
+          }
+        ],
+        "user": [
+          {
+            "name": "_id",
+            "mapTo": "id",
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "mapTo": "userName",
+            "type": "string"
+          },
+          {
+            "name": "active",
+            "mapTo": "active",
+            "type": "boolean"
+          },
+          {
+            "name": "password",
+            "mapTo": "password",
+            "type": "string"
+          },
+          {
+            "name": "givenName",
+            "mapTo": "name.givenName",
+            "type": "string"
+          },
+          {
+            "name": "familyName",
+            "mapTo": "name.familyName",
+            "type": "string"
+          },
+          {
+            "name": "displayName",
+            "mapTo": "name.formatted",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "mapTo": "attributes.email.value",
+            "type": "string"
+          },
+          {
+            "name": "homePhone",
+            "mapTo": "phoneNumbers.home.value",
+            "type": "string"
+          },
+          {
+            "name": "postalCode",
+            "mapTo": "addresses.work.postalCode",
+            "type": "string"
+          },
+          {
+            "name": "streetAddress",
+            "mapTo": "addresses.work.streetAddress",
+            "type": "string"
+          },
+          {
+            "name": "telephoneNumber",
+            "mapTo": "attributes.telephoneNumber.value",
+            "type": "string"
+          }
+        ]
+      },
+      "workspaceId": "666af437077b29648f7a32e2",
+      "interceptors": [
+        {
+          "name": "Business Rule",
+          "description": "Define customized business rules to intercept and control requests.",
+          "type": "business-rule",
+          "details": {
+            "type": "all",
+            "block_on_error": true,
+            "conditions": [
+              {
+                "field": "",
+                "type": "string",
+                "condition": "equal",
+                "value": ""
+              }
+            ],
+            "allowed_requests": [
+              {
+                "path": "users",
+                "method": "POST"
+              }
+            ]
+          }
+        }
+      ],
+      "adapters": [
+        {
+          "name": "Cache",
+          "description": "Cache data to store information and improve the efficiency of the application",
+          "type": "cache",
+          "details": {
+            "method": "GET",
+            "expires_in": 60,
+            "mapping": [],
+            "auth": [
+              {
+                "name": "type",
+                "value": "none"
+              }
+            ]
+          }
+        }
+      ],
+      "listeners": [],
+      "positions": {
+        "adapters": {
+          "x": 500,
+          "y": 0
+        },
+        "interceptors": {
+          "x": 500,
+          "y": 540
+        },
+        "listeners": {
+          "x": 500,
+          "y": 0
+        },
+        "config": {
+          "x": 500,
+          "y": 1680
+        },
+        "mapping": {
+          "x": 500,
+          "y": 1940
+        },
+        "authentication": {
+          "x": 500,
+          "y": 1180
+        }
+      },
+      "_etag": {
+        "$oid": "666af605077b29648f7a32fa"
+      }
+    }
+  ],
+  "generatedAt": "2024-06-18T16:13:47.487Z"
+}

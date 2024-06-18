@@ -14,13 +14,7 @@ services:
     volumes:
       - data:/home/node/app/data
    
-  forms:
-    depends_on:
-      - scimgateway
-    build: ./forms
-    ports:
-      - "8000:80"
-    restart: always
+  
   
      
 

@@ -1,0 +1,561 @@
+
+openapi: 3.0.0
+info:
+  title: qscim-demo
+  description: SCIM 2.0 qscim-demo API. Defines the SCIM 2.0 endpoints exposed for manage users and groups.
+  version: 1.0.0
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    Users:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: REQUIRED. Array of Strings containing URIs that are used to
+            indicate the namespaces of the SCIM schemas.
+          items:
+            type: string
+        totalResults:
+          type: integer
+          description: REQUIRED. The total number of results returned by the list
+            or query operation.
+        Resources:
+          type: array
+          description: REQUIRED. A multi-valued list of complex objects containing
+            the requested resources.
+          items:
+            $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: REQUIRED. Array of Strings containing URIs that are used to
+            indicate the namespaces of the SCIM schemas.
+          items:
+            type: string
+        id:
+          type: string
+          description: REQUIRED. A unique identifier for a SCIM resource as defined
+            by the service provider.
+        externalId:
+          type: string
+          description: OPTIONAL. A String that is an identifier for the resource as
+            defined by the provisioning client.
+        meta:
+          $ref: '#/components/schemas/Meta'
+        userName:
+          type: string
+          description: "REQUIRED. A service provider's unique identifier for the user,             typically used by the user to directly authenticate to the service provider."
+        name:
+          $ref: '#/components/schemas/Name'
+        displayName:
+          type: string
+          description: "The name of the user, suitable for display to end-users."
+        nickName:
+          type: string
+          description: "The casual way to address the user in real life, e.g.,             'Bob' or 'Bobby' instead of 'Robert'."
+        profileUrl:
+          type: string
+          description: "A URI that is a uniform resource locator and that points to             a location representing the user's online profile (e.g., a web page)."
+        title:
+          type: string
+          description: "The user's title, such as 'Vice President'."
+        userType:
+          type: string
+          description: Used to identify the relationship between the organization
+            and the user.
+        preferredLanguage:
+          type: string
+          description: Indicates the user's preferred written or spoken languages
+            and is generally used for selecting a localized user interface.
+        locale:
+          type: string
+          description: "Used to indicate the User's default location for purposes             of localizing such items as currency, date time format, or numerical             representations."
+        timezone:
+          type: string
+          description: "The User's time zone, in IANA Time Zone database format [RFC6557],             also known as the 'Olson' time zone database format [Olson-TZ] (e.g.,             'America/Los_Angeles')."
+        active:
+          type: boolean
+          description: A Boolean value indicating the user's administrative status.
+        password:
+          type: string
+          description: "This attribute is intended to be used as a means to set, replace             or compare (i.e., filter for equality) a password."
+        emails:
+          type: array
+          description: Email addresses for the User.
+          items:
+            $ref: '#/components/schemas/Attribute'
+        phoneNumbers:
+          type: array
+          description: Phone numbers for the user.
+          items:
+            $ref: '#/components/schemas/Attribute'
+        ims:
+          type: array
+          description: Instant messaging address for the user.
+          items:
+            $ref: '#/components/schemas/Attribute'
+        photos:
+          type:     array
+          description: "A URI that is a uniform resource locator (as defined in Section             1.1.3 of [RFC3986]) that points to a resource location representing             the user's image."
+          items:
+            $ref: '#/components/schemas/Attribute'
+        addresses:
+          type: array
+          description: A physical mailing address for this user.
+          items:
+            $ref: '#/components/schemas/Address'
+        groups:
+          type: array
+          description: "A list of groups to which the user belongs, either through             direct membership, through nested groups, or dynamically calculated."
+          items:
+            $ref: '#/components/schemas/Member'
+        entitlements:
+          type: array
+          description: A list of entitlements for the user that represent a thing
+            the user has.
+          items:
+            type: string
+        roles:
+          type: array
+          description: "A list of roles for the user that collectively represent who             the user is, e.g., 'Student', 'Faculty'."
+          items:
+            type: string
+    Groups:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: REQUIRED. Array of Strings containing URIs that are used to
+            indicate the namespaces of the SCIM schemas.
+          items:
+            type: string
+        totalResults:
+          type: integer
+          description: REQUIRED. The total number of results returned by the list
+            or query operation.
+        Resources:
+          type: array
+          description: REQUIRED. A multi-valued list of complex objects containing
+            the requested resources.
+          items:
+            $ref: '#/components/schemas/Group'
+    Group:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: REQUIRED. Array of Strings containing URIs that are used to
+            indicate the namespaces of the SCIM schemas.
+          items:
+            type: string
+        id:
+          type: string
+          description: REQUIRED. A unique identifier for a SCIM resource as defined
+            by the service provider.
+        externalId:
+          type: string
+          description: OPTIONAL. A String that is an identifier for the resource as
+            defined by the provisioning client.
+        meta:
+          $ref: '#/components/schemas/Meta'
+        displayName:
+          type: string
+          description: REQUIRED. A human-readable name for the Group.
+        members:
+          type: array
+          description: A list of members of the Group.
+          items:
+            $ref: '#/components/schemas/Member'
+    Meta:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          description: The name of the resource type of the resource.
+        created:
+          type: string
+          description: The "DateTime" that the resource was added to the service provider.
+        lastModified:
+          type: string
+          description: The most recent DateTime that the details of this resource
+            were updated at the service provider.
+        location:
+          type: string
+          description: The URI of the resource being returned.
+        version:
+          type: string
+          description: The version of the resource being returned.
+    Name:
+      type: object
+      properties:
+        formatted:
+          type: string
+          description: "The full name, including all middle names, titles, and suffixes             as appropriate, formatted for display (e.g., 'Ms. Barbara Jane Jensen,             III')."
+        familyName:
+          type: string
+          description: "The family name of the User, or last name in most Western             languages (e.g., 'Jensen' given the full name 'Ms. Barbara Jane Jensen,             III')."
+        givenName:
+          type: string
+          description: "The given name of the User, or first name in most Western             languages (e.g., 'Barbara' given the full name' Ms. Barbara Jane             Jensen, III')."
+        middleName:
+          type: string
+          description: "The middle name(s) of the User (e.g., 'Jane' given the full             name 'Ms. Barbara Jane Jensen, III')."
+        honorificPrefix:
+          type: string
+          description: "The honorific prefix(es) of the User, or title in most Western             languages (e.g., 'Ms.' given the full name 'Ms. Barbara Jane Jensen,             III')."
+        honorificSuffix:
+          type: string
+          description: "The honorific suffix(es) of the User, or suffix in most Western             languages (e.g., 'III' given the full name 'Ms. Barbara Jane Jensen,             III')."
+    Attribute:
+      type: object
+      properties:
+        value:
+          type: string
+          description: "The attribute's significant value, e.g., email address, phone             number."
+        type:
+          type: string
+          description: "A label indicating the attribute's function, e.g., 'work'             or 'home'."
+        primary:
+          type: boolean
+          description: "A Boolean value indicating the 'primary' or preferred attribute             value for this attribute, e.g., the preferred mailing address or the             primary email address."
+    Address:
+      type: object
+      properties:
+        formatted:
+          type: string
+          description: "The full mailing address, formatted for display or use with             a mailing label."
+        streetAddress:
+          type: string
+          description: "The full street address component, which may include house             number, street name, P.O. box, and multi-line extended street address             information."
+        locality:
+          type: string
+          description: The city or locality component.
+        region:
+          type: string
+          description: The state or region component.
+        postalCode:
+          type: string
+          description: The zip code or postal code component.
+        country:
+          type: string
+          description: The country name component.
+    Member:
+      type: object
+      properties:
+        value:
+          type: string
+          description: id attribute of a SCIM resource
+        $ref:
+          type: string
+          description: The URI of a SCIM resource.
+        display:
+          type: string
+          description: A human-readable name for the member
+    Certificate:
+      type: object
+      properties:
+        value:
+          type: string
+          description: DER-encoded X.509 certificate
+security:
+  - basicAuth: []
+servers:
+  - url: https://qscim-stg.qriarlabs.cloud/api/container/8881
+    description: "MongoDB-example: mongodb Connector"
+tags:
+  - name: users
+    description: Users information
+  - name: groups
+    description: Groups information
+  - name: ping
+    description: Route used for health check
+paths:
+  /ping:
+    get:
+      tags:
+        - 'ping'
+      summary: Health Check
+      responses:
+        '200':
+          description: Successful response
+  /users:
+    get:
+        tags:
+          - users
+        summary: List users resources
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Users'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    post:
+        tags:
+          - users
+        summary: Create a new user
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        responses:
+          '201':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User'
+          '409':
+            description: Conflict (duplicated key)
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+  /users/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: Unique user identifier
+          required: true
+          schema:
+            type: string
+    get:
+        tags:
+          - users
+        summary: Get a user by ID
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    put:
+        tags:
+          - users
+        summary: Update a user by ID
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+               schema:
+                $ref: '#/components/schemas/User'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    patch:
+        tags:
+          - users
+        summary: Partial Update of a user by ID
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    delete:
+        tags:
+          - users
+        summary: Delete a user by ID
+        responses:
+          '204':
+            description: User deleted successfully
+            content: {}
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+  /groups:
+    get:
+        tags:
+          - groups
+        summary: List groups resources
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Groups'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    post:
+        tags:
+          - groups
+        summary: Create a new group
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        responses:
+          '201':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Group'
+          '409':
+            description: Conflict (duplicated key)
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+  /groups/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: Unique group identifier
+          required: true
+          schema:
+            type: string
+    get:
+        tags:
+          - groups
+        summary: Get a group by ID
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Group'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    put:
+        tags:
+          - groups
+        summary: Update a group by ID
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+               schema:
+                $ref: '#/components/schemas/Group'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    patch:
+        tags:
+          - groups
+        summary: Partial Update of a group by ID
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Group'
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    delete:
+        tags:
+          - groups
+        summary: Delete a group by ID
+        responses:
+          '204':
+            description: Group deleted successfully
+            content: {}
+          400:
+            description: Bad request
+          401:
+            description: Invalid token
+          '404':
+            description: Not found
+          '500':
+            description: Internal server error
+    

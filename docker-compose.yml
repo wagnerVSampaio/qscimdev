@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  scimgateway:
+    build: ./scimgateway
+    ports:
+      - "8881:8881"
+    restart: always
+    environment:
+      mongodb-mongodb-example_BASIC_0_USERNAME: gwadmin
+      mongodb-mongodb-example_BASIC_0_PASSWORD: password
+
+      DATABASE_URL: mongodb+srv://admin:cancao123@cluster0.6igatzu.mongodb.net/form?w=majority&retryWrites=true&authSource=admin
+    volumes:
+      - data:/home/node/app/data
+   
+  
+  
+     
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /opt/qscim/data/qscim-demo/data

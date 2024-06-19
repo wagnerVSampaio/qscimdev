@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-
-  <html>
-    <head>
-      <title>Form - My form</title>
-      <link rel="stylesheet" href="/styles.css" />
-    </head>
+    <html>
+      <head>
+        <title>Form - My form</title>
+        <link rel="stylesheet" href="../styles.css" />
+        
+    <style>
+      .card_form[data-form="1"] {
+        background-color: #90a2d6;
+      }
+    </style>
   
-    <body>
-      <div class="page_container">
-        <div class="header">
-          <h2>My form</h2>
-        </div>
-  
-        <form class="form_container" id="form">
-        <div class="content_input" style="text-align: center;">
+      </head>
+      <body>
+        <div class="page_container">
+          <div class="card_form" data-form="1">
+            <form class="form_container" id="form">
+              <div class="content_input" style="text-align: right;">
     <h2>My title</h2>
         <p></p>
-    </div> <div class="content_input" style="text-align: center;">
-    <h2>My image</h2>
-        <img src= alt="image"/>
-    </div> <div class="form_input">
-    
-    <p>Text Input</p>
-        <input id="input_"  />
     </div>
-  
-          <button type="submit" id='submit_btn'  class="submit-btn">Submit</button>
-        </form>
-      </div>
-      <script src="../scripts.js"></script>
-      <script src="./1.js"></script>
-    </body>
-  </html>
+              <div class="message-container" id="messageContainer"></div>
+              <div class="button_customer"> 
+                <button type="submit" id="submit_btn"  class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <script src="../scripts.js"></script>
+        <script src="./1.js"></script>
+      </body>
+    </html>
   

@@ -1,4 +1,26 @@
 const baseUrl = "http://host.docker.internal";
+  function showMessage(type, description) {
+    var messageContainer = document.getElementById('messageContainer');
+    var messageDiv = document.createElement('div');
+    messageDiv.className = 'message ' + type;
+    switch (type) {
+      case 'success':
+        messageDiv.textContent = 'Form submitted successfully';
+        break;
+      case 'error':
+        messageDiv.textContent = 'Form submitted error: ' + description;
+        break;
+      case 'warning':
+        messageDiv.textContent = 'This is a warning message';
+        break;
+      default:
+        break;
+    }
+    messageContainer.appendChild(messageDiv);
+    setTimeout(function () {
+      messageDiv.remove();
+    }, 3000); 
+  }
 
   async function formHandler(e, form, submitBtn, selectedConnectors) {
     submitBtn.innerHTML = "...";
@@ -42,10 +64,10 @@ const baseUrl = "http://host.docker.internal";
       await Promise.all(promises).catch((error) => {
         throw new Error(error);
       });
-      alert("Form submitted successfully");
+      showMessage("sucess")
       window.location.href = "card.html";
     } catch (error) {
-      alert("Error: " + error.message);
+      showMessage("error", error.message)
       console.error(error);
     } finally {
       submitBtn.innerHTML = "Submit";

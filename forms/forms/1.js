@@ -3,7 +3,14 @@ let form = document.getElementById("form");
   
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const selectedConnectors = [];
+    const selectedConnectors = [{
+        url: ":8889/users",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Basic " + btoa("wagner:1236"),
+        },
+      }];
   
     await formHandler(e, form, submitBtn, selectedConnectors);
   });

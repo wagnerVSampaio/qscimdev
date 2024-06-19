@@ -4,11 +4,13 @@ info:
   title: temp
   description: SCIM 2.0 temp API. Defines the SCIM 2.0 endpoints exposed for manage users and groups.
   version: 1.0.0
+security: 
+  - basic: []
 components:
   securitySchemes:
-    basicAuth:
+    basic:
       type: http
-      scheme: basic
+      scheme: basic    
   schemas:
     Users:
       type: object
@@ -263,8 +265,6 @@ components:
         value:
           type: string
           description: DER-encoded X.509 certificate
-security:
-  - basicAuth: []
 servers:
   - url: http://localhost:3000/api/container/8889
     description: "New Connector2: mongodb Connector"

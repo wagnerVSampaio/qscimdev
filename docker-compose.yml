@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  scimgateway:
+    build: ./scimgateway
+    ports:
+      - "8880:8880"
+    restart: always
+    environment:
+      loki-new-connector_BASIC_0_USERNAME: wagner
+      loki-new-connector_BASIC_0_PASSWORD: 1234
+
+    volumes:
+      - data:/home/node/app/data
+   
+  
+  
+     
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/wagner/Documents/qscim-files/teste6/data

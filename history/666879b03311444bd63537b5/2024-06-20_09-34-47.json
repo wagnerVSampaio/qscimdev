@@ -1,0 +1,185 @@
+{
+  "connectorId": "666879b03311444bd63537b5",
+  "name": "New Connector2",
+  "connectors": [
+    {
+      "_id": {
+        "$oid": "666879b03311444bd63537b5"
+      },
+      "name": "New Connector2",
+      "description": "Configures MongoDB to be used as a data connector. It formats names, defines scimgateway settings and formats group and user mappings. ",
+      "connector": "mongodb",
+      "port": 8889,
+      "auth": [
+        {
+          "name": "Basic Auth",
+          "description": "Basic Auth simplifies user authentication, guaranteeing secure access via username and password credentials.",
+          "type": "basic",
+          "details": {
+            "username": "wagner",
+            "password": "1236",
+            "readOnly": false
+          }
+        }
+      ],
+      "config": {
+        "description": "",
+        "url": "mongodb+srv://wagner:1234@cluster0.22ykmnt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+        "database": "qscim",
+        "userCollectionName": "users",
+        "groupCollectionName": "groups"
+      },
+      "mapping": {
+        "description": "",
+        "group": [
+          {
+            "name": "_id",
+            "mapTo": "id",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "mapTo": "displayName",
+            "type": "string"
+          }
+        ],
+        "user": [
+          {
+            "name": "_id",
+            "mapTo": "id",
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "mapTo": "userName",
+            "type": "string"
+          },
+          {
+            "name": "active",
+            "mapTo": "active",
+            "type": "boolean"
+          },
+          {
+            "name": "password",
+            "mapTo": "password",
+            "type": "string"
+          },
+          {
+            "name": "givenName",
+            "mapTo": "name.givenName",
+            "type": "string"
+          },
+          {
+            "name": "familyName",
+            "mapTo": "name.familyName",
+            "type": "string"
+          },
+          {
+            "name": "displayName",
+            "mapTo": "name.formatted",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "mapTo": "attributes.email.value",
+            "type": "string"
+          },
+          {
+            "name": "homePhone",
+            "mapTo": "phoneNumbers.home.value",
+            "type": "string"
+          },
+          {
+            "name": "postalCode",
+            "mapTo": "addresses.work.postalCode",
+            "type": "string"
+          },
+          {
+            "name": "streetAddress",
+            "mapTo": "addresses.work.streetAddress",
+            "type": "string"
+          },
+          {
+            "name": "telephoneNumber",
+            "mapTo": "attributes.telephoneNumber.value",
+            "type": "string"
+          }
+        ]
+      },
+      "workspaceId": "665f13a5fd6a9b41ddcd9e87",
+      "interceptors": [
+        {
+          "name": "API Request",
+          "description": "Make request to third party applications to enrich your application's payload.",
+          "type": "api",
+          "details": {
+            "method": "GET",
+            "allowed_requests": [
+              {
+                "path": "users",
+                "method": "POST"
+              }
+            ],
+            "mapping": [],
+            "auth": [
+              {
+                "name": "type",
+                "value": "none"
+              }
+            ]
+          }
+        }
+      ],
+      "adapters": [],
+      "listeners": [
+        {
+          "name": "Apache Kafka Listener",
+          "description": "Link to an Apache Kafka application to provide a new entity based on kafka incoming data",
+          "type": "kafka",
+          "details": {
+            "url": "wag",
+            "client_id": "ssd",
+            "group_id": "xxx",
+            "path": "users",
+            "auth": {
+              "username": "wagne",
+              "password": "aa",
+              "mechanism": "zxzxz"
+            },
+            "mapping": []
+          }
+        }
+      ],
+      "positions": {
+        "adapters": {
+          "x": 500,
+          "y": 600
+        },
+        "interceptors": {
+          "x": 500,
+          "y": 700
+        },
+        "listeners": {
+          "x": 500,
+          "y": 0
+        },
+        "config": {
+          "x": 500,
+          "y": 1860
+        },
+        "mapping": {
+          "x": 500,
+          "y": 2120
+        },
+        "authentication": {
+          "x": 500,
+          "y": 1440
+        }
+      },
+      "_etag": {
+        "$oid": "6672ea99f7c1995fd5b07e3d"
+      }
+    }
+  ],
+  "generatedAt": "2024-06-20T12:34:47.452Z"
+}

@@ -1,9 +1,12 @@
 
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: temp
   description: SCIM 2.0 temp API. Defines the SCIM 2.0 endpoints exposed for manage users and groups.
   version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/container/8889
+    description: "New Connector2: mongodb Connector"
 security: 
   - basic: []
 components:
@@ -265,9 +268,6 @@ components:
         value:
           type: string
           description: DER-encoded X.509 certificate
-servers:
-  - url: http://localhost:3000/api/container/8889
-    description: "New Connector2: mongodb Connector"
 tags:
   - name: users
     description: Users information

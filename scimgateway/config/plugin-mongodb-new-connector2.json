@@ -25,13 +25,7 @@
           "baseEntities": []
         }
       ],
-      "bearerToken": [
-        {
-          "token": null,
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ],
+      "bearerToken": [],
       "bearerJwtAzure": [
         {
           "tenantIdGUID": null,

@@ -21,9 +21,12 @@ async function fetchNotification(ctx, item, caches, scimData) {
     item.useURL ? `${item.url}${ctx.request.url}` : `${item.url}`
   );
 
-  let formattedAuth = formatAuth(
-    await getCacheInfo(item.auth, caches, item.port)
-  );
+  let formattedAuth = (
+    await formatAuth(
+      await getCacheInfo(item.auth, caches, item.port),
+      `http://localhost:${item.port}`
+    )
+  ).token;
 
   const headers = {
     Authorization: formattedAuth,
